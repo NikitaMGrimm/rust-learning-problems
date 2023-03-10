@@ -1,0 +1,9 @@
+[workspace]
+members = [
+    "variations/*",
+    "8kyu/*",
+    ]
+
+[profile.release]
+lto = true
+opt-level = 3 
