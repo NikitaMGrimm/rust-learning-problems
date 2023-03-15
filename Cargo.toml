@@ -1,9 +1,9 @@
 [workspace]
 members = [
-    "variations/*",
-    "8kyu/*",
+    "RustBook/*",
+    "Codewars/**/*",
     ]
 
 [profile.release]
 lto = true
-opt-level = 3 
+opt-level = 3
