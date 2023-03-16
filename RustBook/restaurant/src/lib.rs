@@ -12,22 +12,33 @@ mod front_of_house { // does not need to be public because its a sibling to eat_
     pub mod hosting {
         use crate::throw_a_tandrum;
 
+        use super::hello_world;
+
         pub fn add_to_waitlist() {
             reserve_table();
             throw_a_tandrum(); // this is above our method directory
+            hello_world();
+            super::hello_world(); // both work, why use super though?
+            // I guess super:: is for readability and its more useful if we need to go up and back down (super::something::etc..)
         } // crate::front_of_house::hosting::add_to_waitlist()
 
-        fn reserve_table() {}
+        fn reserve_table() {
+            super::serving::take_payment(); // super goes up to the parent "front_of_house"
+        } // super::super or something like that is useless because children can always call up.
 
         fn seat_at_table() {}
     }
 
-    mod serving {
+    pub mod serving {
         fn take_order() {}
 
         fn serve_order() {}
 
-        fn take_payment() {}
+        pub fn take_payment() {}
+    }
+
+    fn hello_world() {
+        println!("Hello World!");
     }
 }
 
