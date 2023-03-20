@@ -1,37 +1,48 @@
 use std::error::Error;
 use std::{env, fs};
 
-pub struct Config<'a> {
-    pub query: &'a str,
-    pub file_path: &'a str,
+pub struct Config {
+    pub query: String,
+    pub file_path: String,
     pub case_sensitive: bool,
 }
 
-impl<'a> Config<'a> {
-    pub fn build(args: &[String]) -> Result<Config, &'static str> {
-        if args.len() <= 2 {
-            return Err("Not enough arguments!");
-        }
+impl Config {
+    pub fn build(
+        mut args: impl Iterator<Item = String>, // Config is the env iterator
+    ) -> Result<Config, &'static str> // Might fail
+    {
+        args.next();
 
+        let query = match args.next() {
+            Some(arg) => arg,
+            None => return Err("Didn't get a query string"),
+        };
+
+        let file_path = match args.next() {
+            Some(arg) => arg,
+            None => return Err("Didn't get a file path"),
+        };
+        
         let mut case_sensitive = env::var("CASE_SENSITIVE").is_ok();
-        if args.len() > 3 && &args[3] == "CASE_SENSITIVE" {
+        if let Some(_) = args.next() {
             case_sensitive = true;
         }
 
         Ok(Config {
-            query: &args[1],
-            file_path: &args[2],
+            query,
+            file_path,
             case_sensitive,
         })
     }
 }
 
 pub fn run(config: &Config) -> Result<(), Box<dyn Error>> {
-    let contents = fs::read_to_string(config.file_path)?;
+    let contents = fs::read_to_string(&config.file_path)?;
 
     let result = match config.case_sensitive {
-        true => search(config.query, &contents),
-        false => search_case_insensitive(config.query, &contents),
+        true => search(&config.query, &contents),
+        false => search_case_insensitive(&config.query, &contents),
     };
 
     for line in result {
