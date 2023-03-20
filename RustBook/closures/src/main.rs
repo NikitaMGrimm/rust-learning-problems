@@ -49,20 +49,6 @@ fn main() {
     /////////////////////////////// CLOSURE PROBLEM QUESTION //////////////////////////////////////
     // Lets try it with a trait. Impl trait on FnOnce, then add it as trait bound to F
 
-    trait DynChainCall {
-        // F: FnOnce(i32) -> G,
-        // G: FnOnce(i32) -> i32,
-
-        // and type
-
-        // F: FnOnce(i32, i32) -> i32,
-        // how?
-    }
-
-    impl DynChainCall for FnOnce {
-        // ...
-    }
-
     // BASICALLY: IMPLEMENT OVERLOAD FOR ABOVE printf THAT ACCEPTS BOTH TYPES OF CLOSURE
     // THIS DOES NOT WORK EITHER BECAUSE OF : conflicting implementations of trait `FnPrint`
 
@@ -114,7 +100,6 @@ fn main() {
     // "impl Fn(i32) -> i32" then it should call f(a1)(b1)
     // else, it should panic or something i dont care
 }
-
 
 // Q on stackoverflow
 // https://stackoverflow.com/questions/75785347/how-to-overload-a-rust-function-to-accept-closures-with-different-argument-signa
