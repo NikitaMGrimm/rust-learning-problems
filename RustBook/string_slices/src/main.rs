@@ -7,7 +7,7 @@ fn first_word(s: &str) -> &str {
         }
     }
 
-    &s[..]
+    s
 }
 
 fn main() {
@@ -24,21 +24,21 @@ fn main() {
     // let _word = first_word(my_string);
 
     // references are fine too! (because of the implicit .as_bytes()? Does it auto dereference?)
-    let _word = first_word(&&&&&&&&&&&my_string);
+    let _word = first_word(&my_string);
     println!("{_word}");
 
     let my_string_literal = "hello world";
 
     // `first_word` works on slices of string literals, whether partial or whole
     let _word = first_word(&my_string_literal[0..6]);
-    let _word = first_word(&my_string_literal[..]);
+    let _word = first_word(my_string_literal);
 
     // Because string literals *are* string slices already,
     // this works too, without the slice syntax!
     let _word = first_word(my_string_literal);
 
     // I can take a reference too! (As often as I like :))
-    let _word = first_word(&&&&&&&my_string_literal);
+    let _word = first_word(my_string_literal);
     println!("{_word}");
 
     ///////////////////////////////////////////////////////////////////////////////////////////////

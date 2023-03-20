@@ -24,6 +24,6 @@ fn main() {
         for line in 0..=verse {
             println!("{}", song[line].1);
         }
-        println!("");
+        println!();
     }
 }

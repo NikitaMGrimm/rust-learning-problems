@@ -3,11 +3,11 @@ enum IpAddrKind {
     V6,
 }
 
-fn route(ip_kind: IpAddrKind) {}
+fn route(_ip_kind: IpAddrKind) {}
 
 fn main() {
-    let four = IpAddrKind::V4;
-    let six = IpAddrKind::V6;
+    let _four = IpAddrKind::V4;
+    let _six = IpAddrKind::V6;
 
     route(IpAddrKind::V4);
     route(IpAddrKind::V6);

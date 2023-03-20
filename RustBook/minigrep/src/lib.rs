@@ -36,7 +36,7 @@ impl Config {
         };
         
         let mut case_sensitive = env::var("CASE_SENSITIVE").is_ok();
-        if let Some(_) = args.next() {
+        if args.next().is_some() {
             case_sensitive = true;
         }
 

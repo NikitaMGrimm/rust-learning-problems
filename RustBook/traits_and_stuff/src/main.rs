@@ -38,17 +38,17 @@ fn alternative_hello<T: Greeting>(hey: &T) {
 }
 
 // This is ugly:
-fn some_function(t: &(impl Display + Clone), u: &(impl Clone + Debug)) -> i32 {
+fn some_function(_t: &(impl Display + Clone), _u: &(impl Clone + Debug)) -> i32 {
     0
 }
 
 // One variant:
-fn alternative0_some_function<T: Display + Clone, U: Clone + Debug>(t: &T, u: &U) -> i32 {
+fn alternative0_some_function<T: Display + Clone, U: Clone + Debug>(_t: &T, _u: &U) -> i32 {
     0
 }
 
 // Other variant:
-fn alternative1_some_function<T, U>(t: &T, u: &U) -> i32
+fn alternative1_some_function<T, U>(_t: &T, _u: &U) -> i32
 where
     T: Display + Clone,
     U: Clone + Debug,
