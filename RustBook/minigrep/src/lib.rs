@@ -1,3 +1,14 @@
+//! `minigrep` project as found in the rust book
+//! This is a crate documentation test!
+//! ```
+//! let a = 3;
+//! ```
+//! Code works too!
+//! 
+//! # Example
+//! 
+//! Headers work too!
+
 use std::error::Error;
 use std::{env, fs};
 
@@ -37,6 +48,18 @@ impl Config {
     }
 }
 
+/// Will print all lines in the file that contain the given string.
+/// Takes an argument iterator with a string, query and the target file
+/// 
+/// # Example
+/// 
+/// ```
+/// use minigrep::Config;
+/// 
+/// let args = ["minigrep".to_string(), "to".to_string(), "poem.txt".to_string()].into_iter();
+/// let config = Config::build(args);
+/// minigrep::run(&config.unwrap());
+/// ```
 pub fn run(config: &Config) -> Result<(), Box<dyn Error>> {
     let contents = fs::read_to_string(&config.file_path)?;
 
