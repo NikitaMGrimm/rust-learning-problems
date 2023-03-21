@@ -81,6 +81,10 @@ name = "minigrep"
 version = "0.1.0"
 
 [[package]]
+name = "multithreading_testing"
+version = "0.1.0"
+
+[[package]]
 name = "mystery_identity"
 version = "0.1.0"
 
@@ -134,10 +138,6 @@ version = "0.1.0"
 
 [[package]]
 name = "rectangles_area_method"
-version = "0.1.0"
-
-[[package]]
-name = "refcell"
 version = "0.1.0"
 
 [[package]]
