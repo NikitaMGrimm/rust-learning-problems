@@ -137,6 +137,10 @@ name = "rectangles_area_method"
 version = "0.1.0"
 
 [[package]]
+name = "refcell"
+version = "0.1.0"
+
+[[package]]
 name = "restaurant"
 version = "0.1.0"
 
