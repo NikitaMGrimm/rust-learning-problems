@@ -11,6 +11,14 @@ name = "another_function"
 version = "0.1.0"
 
 [[package]]
+name = "blog_testing_oop"
+version = "0.1.0"
+
+[[package]]
+name = "blog_testing_oop_rusty"
+version = "0.1.0"
+
+[[package]]
 name = "calc_averages"
 version = "0.1.0"
 

@@ -2,7 +2,7 @@ use std::thread;
 use std::time::Duration;
 
 // Channels
-use std::sync::{mpsc, Mutex, Arc};
+use std::sync::{mpsc, Arc, Mutex};
 
 fn main() {
     let handle = thread::spawn(|| {
@@ -34,7 +34,7 @@ fn main() {
 
         for val in vals {
             tx1.send(val).unwrap();
-            thread::sleep(Duration::from_secs(1));
+            thread::sleep(Duration::from_millis(200));
         }
     });
 
@@ -48,7 +48,7 @@ fn main() {
 
         for val in vals {
             tx.send(val).unwrap();
-            thread::sleep(Duration::from_secs(1));
+            thread::sleep(Duration::from_millis(200));
         }
     });
 
@@ -76,4 +76,36 @@ fn main() {
     }
 
     println!("Result: {}", *counter.lock().unwrap());
+
+    // Lets try to make a deadlock.
+    // one thread wants to lock two variables
+    // another one wants the same thing
+    // but each of the threads has only one of them
+
+    let var1 = Arc::new(Mutex::new(1));
+    let var2 = Arc::new(Mutex::new(2));
+
+    let var1_clone = Arc::clone(&var1);
+    let var2_clone = Arc::clone(&var2);
+
+    let handle1 = thread::spawn(move || {
+        let mut num1 = var1_clone.lock().unwrap();
+        thread::sleep(Duration::from_secs(1));  // we make the thread sleep so that the other thread can lock the other variable
+        let mut num2 = var2_clone.lock().unwrap();
+
+        *num1 += 1;
+        *num2 += 1;
+    });
+
+    let handle2 = thread::spawn(move || {
+        let mut num2 = var2.lock().unwrap();
+        thread::sleep(Duration::from_secs(1)); // we make the thread sleep so that the other thread can lock the other variable
+        let mut num1 = var1.lock().unwrap();
+
+        *num1 += 1;
+        *num2 += 1;
+    });
+
+    handle1.join().unwrap();
+    handle2.join().unwrap();
 }
