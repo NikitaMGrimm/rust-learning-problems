@@ -7,6 +7,10 @@ name = "adder"
 version = "0.1.0"
 
 [[package]]
+name = "advanced_closures_testing"
+version = "0.1.0"
+
+[[package]]
 name = "another_function"
 version = "0.1.0"
 
@@ -150,6 +154,10 @@ version = "0.1.0"
 
 [[package]]
 name = "restaurant"
+version = "0.1.0"
+
+[[package]]
+name = "sized_advanced_types_testing"
 version = "0.1.0"
 
 [[package]]
