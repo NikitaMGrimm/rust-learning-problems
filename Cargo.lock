@@ -71,6 +71,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "hello"
+version = "0.1.0"
+
+[[package]]
+name = "hello_multithread"
+version = "0.1.0"
+
+[[package]]
 name = "libc"
 version = "0.2.140"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -171,6 +179,13 @@ version = "0.1.0"
 [[package]]
 name = "structs_testing"
 version = "0.1.0"
+
+[[package]]
+name = "threadpool_testing"
+version = "0.1.0"
+dependencies = [
+ "hello_multithread",
+]
 
 [[package]]
 name = "traits_and_stuff"
