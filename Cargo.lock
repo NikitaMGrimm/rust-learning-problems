@@ -15,6 +15,10 @@ name = "another_function"
 version = "0.1.0"
 
 [[package]]
+name = "basic_mathematical_operations"
+version = "0.1.0"
+
+[[package]]
 name = "blog_testing_oop"
 version = "0.1.0"
 
@@ -69,6 +73,10 @@ version = "0.1.0"
 
 [[package]]
 name = "grasshopper_messi_goals_function"
+version = "0.1.0"
+
+[[package]]
+name = "grasshopper_summation"
 version = "0.1.0"
 
 [[package]]
@@ -129,6 +137,10 @@ name = "ownership_testing"
 version = "0.1.0"
 
 [[package]]
+name = "parse_nice_int_from_char_problem"
+version = "0.1.0"
+
+[[package]]
 name = "powers_of_2"
 version = "0.1.0"
 
@@ -186,6 +198,10 @@ version = "0.1.0"
 
 [[package]]
 name = "sized_advanced_types_testing"
+version = "0.1.0"
+
+[[package]]
+name = "sort_and_star"
 version = "0.1.0"
 
 [[package]]
